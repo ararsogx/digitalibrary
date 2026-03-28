@@ -9,31 +9,31 @@
     
     <!-- PWA Support -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#6c5ce7">
+    <meta name="theme-color" content="#6366f1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="DigiLib">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2702/2702134.png">
 </head>
-<body style="background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.08), transparent), radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.05), transparent); min-height: 100vh;">
+<body>
     <nav class="navbar">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
             <a href="index.html" class="logo">
                 <div class="logo-icon">
-                    <i class="fas fa-bolt"></i>
+                    <i class="fas fa-book-open"></i>
                 </div>
-                <span>Velvet</span>
+                <span>DigiLib</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Edition</a></li>
+                <li><a href="index.html">Home</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="auth-container" style="margin-top: 180px; max-width: 500px; background: var(--surface); border-radius: 40px; padding: 60px; border: 1px solid var(--glass-border); box-shadow: 0 40px 100px rgba(0,0,0,0.4);">
-        <div class="auth-tabs" style="border-bottom: 1px solid var(--glass-border); margin-bottom: 48px;">
-            <div id="login-tab" class="auth-tab active" style="font-size: 1.2rem; font-weight: 800; padding-bottom: 20px;">Identity</div>
-            <div id="signup-tab" class="auth-tab" style="font-size: 1.2rem; font-weight: 800; padding-bottom: 20px;">New Account</div>
+    <div class="auth-container glass-card" style="margin: 140px auto; max-width: 450px;">
+        <div class="auth-tabs" style="display: flex; border-bottom: 2px solid #e2e8f0; margin-bottom: 30px;">
+            <div id="login-tab" class="auth-tab active" style="flex: 1; text-align: center; padding: 15px; cursor: pointer; font-weight: 700; color: var(--primary-color); border-bottom: 2px solid var(--primary-color); margin-bottom: -2px;">Login</div>
+            <div id="signup-tab" class="auth-tab" style="flex: 1; text-align: center; padding: 15px; cursor: pointer; font-weight: 700; color: var(--text-muted);">Sign Up</div>
         </div>
 
         <!-- Login Form -->
@@ -46,8 +46,8 @@
                 <label for="login-password">Password</label>
                 <input type="password" id="login-password" required placeholder="Enter your password">
             </div>
-            <button type="submit" class="btn btn-primary btn-block" style="width: 100%;">Login</button>
-            <p id="login-error" class="text-danger mt-3" style="display: none; color: red;"></p>
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Login</button>
+            <p id="login-error" class="text-danger mt-3" style="display: none; color: #ef4444; margin-top: 15px; text-align: center;"></p>
         </form>
 
         <!-- Signup Form -->
@@ -64,36 +64,36 @@
                 <label for="signup-password">Password</label>
                 <input type="password" id="signup-password" required minlength="6" placeholder="At least 6 characters">
             </div>
-            <button type="submit" class="btn btn-primary btn-block" style="width: 100%;">Create Account</button>
-            <p id="signup-error" class="text-danger mt-3" style="display: none; color: red;"></p>
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Create Account</button>
+            <p id="signup-error" class="text-danger mt-3" style="display: none; color: #ef4444; margin-top: 15px; text-align: center;"></p>
         </form>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-info">
-                    <h3>DigiLib</h3>
-                    <p>Providing exclusive access to premium digital content.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
+                <div>
+                    <h3 style="margin-bottom: 20px;">DigiLib</h3>
+                    <p style="opacity: 0.7;">Your premium destination for exclusive digital content.</p>
                 </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="auth.html">Login</a></li>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Quick Links</h4>
+                    <ul style="list-style: none; opacity: 0.7;">
+                        <li style="margin-bottom: 10px;"><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: white; text-decoration: none;">Terms of Service</a></li>
                     </ul>
                 </div>
-                <div class="footer-social">
-                    <h4>Follow Us</h4>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Follow Us</h4>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; opacity: 0.5; font-size: 0.9rem;">
                 <p>&copy; 2026 DigiLib. All rights reserved.</p>
             </div>
         </div>

@@ -2,25 +2,21 @@ const CACHE_NAME = 'digilib-cache-v1';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
-  '/catalog.html',
   '/auth.html',
   '/book-details.html',
   '/payment.html',
   '/my-books.html',
-  '/cart.html',
   '/admin.html',
   '/css/style.css',
   '/js/main.js',
   '/js/firebase-config.js',
   '/js/auth.js',
-  '/js/catalog.js',
   '/js/book-details.js',
   '/js/payment.js',
   '/js/my-books.js',
-  '/js/cart.js',
   '/js/admin.js',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
-  'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'
+  'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap'
 ];
 
 // Install Service Worker

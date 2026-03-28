@@ -9,62 +9,61 @@
     
     <!-- PWA Support -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#6c5ce7">
+    <meta name="theme-color" content="#6366f1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="DigiLib">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2702/2702134.png">
 </head>
-<body style="background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.08), transparent), radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.05), transparent); min-height: 100vh;">
+<body>
     <nav class="navbar">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
             <a href="index.html" class="logo">
                 <div class="logo-icon">
-                    <i class="fas fa-bolt"></i>
+                    <i class="fas fa-book-open"></i>
                 </div>
-                <span>Velvet</span>
+                <span>DigiLib</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Edition</a></li>
+                <li><a href="index.html">Home</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="section" style="padding-top: 180px;">
+    <div class="section" style="padding-top: 140px;">
         <div class="container">
-            <div class="auth-container" style="max-width: 700px; background: var(--surface); border-radius: 40px; padding: 60px; border: 1px solid var(--glass-border); box-shadow: 0 40px 100px rgba(0,0,0,0.4);">
-                <h1 class="text-center mb-5" style="font-size: 3rem; font-weight: 900; letter-spacing: -0.04em;">Secure Payment</h1>
+            <div class="glass-card" style="max-width: 600px; margin: 0 auto; padding: 40px;">
+                <h1 style="text-align: center; margin-bottom: 30px;">Secure Payment</h1>
                 
-                <div class="payment-info" style="background: rgba(124, 58, 237, 0.05); padding: 48px; border-radius: 32px; border: 1px solid rgba(124, 58, 237, 0.1); margin-bottom: 48px;">
-                    <h3 class="mb-4" style="font-weight: 800; font-size: 1.4rem;">Transaction Protocol</h3>
-                    <p style="color: var(--text-dim); margin-bottom: 32px; font-size: 1.1rem;">Follow the encrypted payment sequence through Telebirr to confirm ownership.</p>
+                <div style="background: rgba(99, 102, 241, 0.05); padding: 30px; border-radius: 20px; border: 1px solid rgba(99, 102, 241, 0.1); margin-bottom: 30px;">
+                    <h3 style="margin-bottom: 15px;">Payment Instructions</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 25px;">Please transfer the exact amount to the merchant number below via Telebirr.</p>
                     
-                    <div style="background: var(--bg); padding: 32px; border-radius: 24px; text-align: center; border: 1px solid var(--glass-border); margin-bottom: 32px;">
-                        <span style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-dim); margin-bottom: 8px;">Merchant Node</span>
-                        <h2 style="color: var(--primary); font-size: 3.5rem; letter-spacing: 2px; font-weight: 900;">0905028370</h2>
+                    <div style="background: var(--bg-color); padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #e2e8f0; margin-bottom: 20px;">
+                        <span style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 5px;">Merchant Number</span>
+                        <h2 style="color: var(--primary-color); font-size: 2.5rem; letter-spacing: 1px;">0905028370</h2>
                     </div>
                     
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 24px; background: rgba(239, 68, 68, 0.05); border-radius: 20px;">
-                        <span style="font-weight: 600; color: var(--text-dim);">Total Required</span>
-                        <span id="payment-amount" style="font-size: 1.8rem; font-weight: 900; color: var(--danger);">... ETB</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: white; border-radius: 12px; border: 1px solid #e2e8f0;">
+                        <span style="font-weight: 600;">Total Amount</span>
+                        <span id="payment-amount" style="font-size: 1.5rem; font-weight: 800; color: var(--primary-color);">... ETB</span>
                     </div>
                 </div>
 
                 <form id="payment-form">
-                    <div class="form-group" style="margin-bottom: 32px;">
-                        <label for="transaction-id" style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Sequence ID (Transaction Number)</label>
-                        <input type="text" id="transaction-id" required placeholder="Enter SMS Sequence ID" 
-                               style="width: 100%; padding: 20px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text); font-size: 1.1rem;">
-                        <p style="margin-top: 12px; font-size: 0.9rem; color: var(--text-dim);">Use prefix <strong>TB-</strong> for instant development bypass.</p>
+                    <div class="form-group">
+                        <label for="transaction-id">Transaction Number (from SMS)</label>
+                        <input type="text" id="transaction-id" required placeholder="Enter 10-digit ID">
+                        <p style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">Demo bypass: Use prefix <strong>TB-</strong></p>
                     </div>
-                    <button type="submit" id="verify-btn" class="btn btn-primary" style="width: 100%; height: 70px; font-size: 1.2rem;">
-                        Finalize Ownership
+                    <button type="submit" id="verify-btn" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 10px;">
+                        Verify Payment
                     </button>
-                    <p id="payment-status" class="mt-4 text-center" style="font-weight: 600; font-size: 1.1rem; color: var(--primary);"></p>
+                    <p id="payment-status" class="mt-4 text-center" style="font-weight: 600; margin-top: 20px; text-align: center;"></p>
                 </form>
 
-                <div class="text-center mt-5">
-                    <a href="index.html" class="btn btn-outline btn-sm" style="border: none; opacity: 0.6;">Abandon Sequence</a>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="index.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Cancel Transaction</a>
                 </div>
             </div>
         </div>
@@ -73,28 +72,28 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-info">
-                    <h3>DigiLib</h3>
-                    <p>Providing exclusive access to premium digital content.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
+                <div>
+                    <h3 style="margin-bottom: 20px;">DigiLib</h3>
+                    <p style="opacity: 0.7;">Your premium destination for exclusive digital content.</p>
                 </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="auth.html">Login</a></li>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Quick Links</h4>
+                    <ul style="list-style: none; opacity: 0.7;">
+                        <li style="margin-bottom: 10px;"><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: white; text-decoration: none;">Terms of Service</a></li>
                     </ul>
                 </div>
-                <div class="footer-social">
-                    <h4>Follow Us</h4>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Follow Us</h4>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; opacity: 0.5; font-size: 0.9rem;">
                 <p>&copy; 2026 DigiLib. All rights reserved.</p>
             </div>
         </div>

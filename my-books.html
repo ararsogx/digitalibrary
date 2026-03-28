@@ -9,42 +9,42 @@
     
     <!-- PWA Support -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#6c5ce7">
+    <meta name="theme-color" content="#6366f1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="DigiLib">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2702/2702134.png">
 </head>
-<body style="background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.08), transparent), radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.05), transparent); min-height: 100vh;">
+<body>
     <nav class="navbar">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
             <a href="index.html" class="logo">
                 <div class="logo-icon">
-                    <i class="fas fa-bolt"></i>
+                    <i class="fas fa-book-open"></i>
                 </div>
-                <span>Velvet</span>
+                <span>DigiLib</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Edition</a></li>
-                <li id="my-books-link" class="active"><a href="my-books.html">Library</a></li>
-                <li id="admin-link" style="display: none;"><a href="admin.html">Portal</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li id="my-books-link" class="active"><a href="my-books.html">My Library</a></li>
+                <li id="admin-link" style="display: none;"><a href="admin.html">Admin</a></li>
                 <li id="user-profile">
                     <div style="display: flex; align-items: center; gap: 15px;">
-                        <span id="user-email" style="font-weight: 700; font-size: 0.9rem; opacity: 0.8;"></span>
-                        <button id="logout-btn" class="btn btn-outline btn-sm" style="padding: 8px 15px;"><i class="fas fa-power-off"></i></button>
+                        <span id="user-email" style="font-weight: 600; font-size: 0.9rem;"></span>
+                        <button id="logout-btn" class="btn btn-outline btn-sm" style="padding: 8px 15px;"><i class="fas fa-sign-out-alt"></i></button>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <div class="section" style="padding-top: 180px;">
+    <div class="section" style="padding-top: 140px;">
         <div class="container">
-            <h1 class="section-title" style="margin-bottom: 24px;">Your Private Collection</h1>
-            <p class="text-center mb-5" style="color: var(--text-dim); font-size: 1.2rem; font-weight: 400;">Access your authenticated premium digital editions.</p>
+            <h1 class="section-title" data-aos="fade-up">My Library</h1>
+            <p style="text-align: center; color: var(--text-muted); font-size: 1.1rem; margin-top: -40px; margin-bottom: 60px;">Your collection of premium digital books.</p>
             
-            <div id="my-books-list" class="features-grid" style="margin-top: 80px;">
-                <div class="loader" style="margin: 0 auto;"></div>
+            <div id="my-books-list" class="book-grid">
+                <div class="loader"></div>
             </div>
         </div>
     </div>
@@ -52,28 +52,28 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-info">
-                    <h3>DigiLib</h3>
-                    <p>Providing exclusive access to premium digital content.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
+                <div>
+                    <h3 style="margin-bottom: 20px;">DigiLib</h3>
+                    <p style="opacity: 0.7;">Your premium destination for exclusive digital content.</p>
                 </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="auth.html">Login</a></li>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Quick Links</h4>
+                    <ul style="list-style: none; opacity: 0.7;">
+                        <li style="margin-bottom: 10px;"><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: white; text-decoration: none;">Terms of Service</a></li>
                     </ul>
                 </div>
-                <div class="footer-social">
-                    <h4>Follow Us</h4>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Follow Us</h4>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; opacity: 0.5; font-size: 0.9rem;">
                 <p>&copy; 2026 DigiLib. All rights reserved.</p>
             </div>
         </div>

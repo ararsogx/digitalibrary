@@ -90,15 +90,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     justify-content: space-between;
                     align-items: center;
                     padding: 20px;
-                    background: var(--surface);
+                    background: var(--surface-color);
                     border-radius: 16px;
                     margin-bottom: 12px;
                     border: 1px solid var(--glass-border);
                 `;
                 
                 const status = data.used ? 
-                    `<span style="color: var(--danger); font-weight: 700; font-size: 0.8rem;">REDEEMED BY ${data.usedBy.substring(0,8)}...</span>` : 
-                    '<span style="color: var(--secondary); font-weight: 700; font-size: 0.8rem;">AVAILABLE</span>';
+                    `<span style="color: #ef4444; font-weight: 700; font-size: 0.8rem;">REDEEMED BY ${data.usedBy.substring(0,8)}...</span>` : 
+                    '<span style="color: var(--primary-color); font-weight: 700; font-size: 0.8rem;">AVAILABLE</span>';
                 
                 li.innerHTML = `
                     <strong style="letter-spacing: 1px;">${doc.id}</strong>
@@ -236,15 +236,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span style="font-weight: 700;">${book.title}</span>
                         </div>
                     </td>
-                    <td style="padding: 20px; font-weight: 500; color: var(--text-dim);">${book.author}</td>
+                    <td style="padding: 20px; font-weight: 500; color: var(--text-muted);">${book.author}</td>
                     <td style="padding: 20px;">
-                        <span class="category" style="font-size: 0.7rem; background: ${book.type === 'premium' ? 'rgba(244, 63, 94, 0.1)' : 'rgba(16, 185, 129, 0.1)'}; color: ${book.type === 'premium' ? 'var(--accent)' : 'var(--secondary)'};">
+                        <span class="category" style="font-size: 0.7rem; background: ${book.type === 'premium' ? 'rgba(99, 102, 241, 0.1)' : 'rgba(16, 185, 129, 0.1)'}; color: ${book.type === 'premium' ? 'var(--primary-color)' : '#10b981'};">
                             ${book.type}
                         </span>
                     </td>
                     <td style="padding: 20px;">
                         <div class="action-btns">
-                            <button onclick="deleteBook('${doc.id}')" class="btn btn-outline btn-sm" style="border-color: var(--danger); color: var(--danger); padding: 8px 12px;"><i class="fas fa-trash"></i></button>
+                            <button onclick="window.deleteBook('${doc.id}')" class="btn btn-outline btn-sm" style="border-color: #ef4444; color: #ef4444; padding: 8px 12px;"><i class="fas fa-trash"></i></button>
                         </div>
                     </td>
                 `;
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Delete Book Logic
-    function deleteBook(id) {
+    window.deleteBook = function(id) {
         if (confirm('Are you sure you want to delete this book?')) {
             db.collection('books').doc(id).delete().then(() => {
                 fetchAdminBooks();

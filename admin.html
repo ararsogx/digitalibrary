@@ -9,131 +9,133 @@
     
     <!-- PWA Support -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#6c5ce7">
+    <meta name="theme-color" content="#6366f1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="DigiLib">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2702/2702134.png">
 </head>
-<body style="background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.08), transparent), radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.05), transparent); min-height: 100vh;">
+<body>
     <nav class="navbar">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
             <a href="index.html" class="logo">
                 <div class="logo-icon">
-                    <i class="fas fa-bolt"></i>
+                    <i class="fas fa-book-open"></i>
                 </div>
-                <span>Velvet Control</span>
+                <span>DigiLib Admin</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Edition</a></li>
+                <li><a href="index.html">Home</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="section" style="padding-top: 180px;">
+    <div class="section" style="padding-top: 140px;">
         <div class="container">
-            <h1 class="section-title" style="margin-bottom: 80px;">Master Console</h1>
+            <h1 class="section-title" data-aos="fade-up">Admin Console</h1>
             
             <div id="admin-auth-check" style="display: none;">
                 <!-- Add Book Form -->
-                <div class="auth-container" style="max-width: 800px; margin-bottom: 100px; background: var(--surface); border-radius: 40px; padding: 60px; border: 1px solid var(--glass-border); box-shadow: 0 40px 100px rgba(0,0,0,0.4);">
-                    <h2 class="text-center mb-5" style="font-weight: 900; font-size: 2.2rem; letter-spacing: -0.04em;">Initialize Product</h2>
+                <div class="glass-card" style="max-width: 800px; margin: 0 auto 60px;">
+                    <h2 style="margin-bottom: 30px; text-align: center;">Initialize Product</h2>
                     <form id="add-book-form">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                             <div class="form-group">
-                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Product Title</label>
-                                <input type="text" id="book-title" required placeholder="e.g. Velvet Night" style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
+                                <label>Product Title</label>
+                                <input type="text" id="book-title" required placeholder="e.g. Premium Book">
                             </div>
                             <div class="form-group">
-                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Author/Creator</label>
-                                <input type="text" id="book-author" required placeholder="e.g. Ararso GX" style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
+                                <label>Author/Creator</label>
+                                <input type="text" id="book-author" required placeholder="e.g. Author Name">
                             </div>
                         </div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                             <div class="form-group">
-                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Category</label>
-                                <select id="book-category" required style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
+                                <label>Category</label>
+                                <select id="book-category" required>
                                     <option value="Premium">Premium Edition</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Pricing Type</label>
-                                <select id="book-type" required style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
+                                <label>Pricing Type</label>
+                                <select id="book-type" required>
                                     <option value="premium">Paid Premium</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group" id="price-group" style="margin-top: 30px;">
-                            <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Selling Price (ETB)</label>
-                            <input type="number" id="book-price" value="200" min="0" style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
+                        <div class="form-group">
+                            <label>Selling Price (ETB)</label>
+                            <input type="number" id="book-price" value="200" min="0">
                         </div>
-                        <div class="form-group" style="margin-top: 30px;">
-                            <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Product Overview</label>
-                            <textarea id="book-description" rows="4" placeholder="Brief overview..." style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);"></textarea>
+                        <div class="form-group">
+                            <label>Product Overview</label>
+                            <textarea id="book-description" rows="4" placeholder="Brief overview..."></textarea>
                         </div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                             <div class="form-group">
-                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Cover Visualization (Image)</label>
-                                <input type="file" id="book-cover" accept="image/*" style="width: 100%; color: var(--text-dim);">
+                                <label>Cover Image</label>
+                                <input type="file" id="book-cover" accept="image/*">
                             </div>
                             <div class="form-group">
-                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Digital Product (PDF)</label>
-                                <input type="file" id="book-file" accept=".pdf" style="width: 100%; color: var(--text-dim);">
+                                <label>PDF File</label>
+                                <input type="file" id="book-file" accept=".pdf">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="add-btn" style="width: 100%; margin-top: 50px; height: 70px; font-size: 1.2rem;">Launch Product</button>
-                        <p id="upload-status" class="mt-4 text-center" style="font-weight: 700; color: var(--secondary);"></p>
+                        <button type="submit" class="btn btn-primary btn-lg" id="add-btn" style="width: 100%; margin-top: 20px;">Launch Product</button>
+                        <p id="upload-status" class="mt-4 text-center" style="font-weight: 700; color: var(--primary-color); margin-top: 20px;"></p>
                     </form>
                 </div>
 
                 <!-- Books Management Table -->
-                <div class="admin-table-container glass" style="border-radius: 40px; padding: 50px; background: var(--surface);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
-                        <h2 style="font-weight: 900; font-size: 2rem; letter-spacing: -0.04em;">Current Product</h2>
+                <div class="glass-card" style="margin-bottom: 60px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                        <h2>Current Product</h2>
                         <div style="display: flex; gap: 15px;">
-                            <button id="cleanup-btn" class="btn btn-outline btn-sm" style="border-color: var(--danger); color: var(--danger);">Cleanup Inventory</button>
+                            <button id="cleanup-btn" class="btn btn-outline btn-sm" style="border-color: #ef4444; color: #ef4444;">Cleanup Inventory</button>
                             <button id="seed-btn" class="btn btn-outline btn-sm" style="display: none;">Generate Samples</button>
                         </div>
                     </div>
-                    <table class="admin-table" style="width: 100%; border-collapse: separate; border-spacing: 0 15px;">
-                        <thead>
-                            <tr style="text-align: left; color: var(--text-dim); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">
-                                <th style="padding: 20px;">Product</th>
-                                <th style="padding: 20px;">Creator</th>
-                                <th style="padding: 20px;">Status</th>
-                                <th style="padding: 20px;">Control</th>
-                            </tr>
-                        </thead>
-                        <tbody id="admin-books-list">
-                            <!-- Loaded via JS -->
-                        </tbody>
-                    </table>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="text-align: left; border-bottom: 2px solid #e2e8f0; color: var(--text-muted);">
+                                    <th style="padding: 15px;">Product</th>
+                                    <th style="padding: 15px;">Creator</th>
+                                    <th style="padding: 15px;">Status</th>
+                                    <th style="padding: 15px;">Control</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-books-list">
+                                <!-- Loaded via JS -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Transaction Verification Management -->
-                <div class="auth-container" style="max-width: 800px; margin-top: 100px; background: var(--bg); border: 2px dashed var(--primary); border-radius: 40px; padding: 60px;">
-                    <h2 class="text-center mb-4" style="font-weight: 900; font-size: 2rem;">Verification Node</h2>
-                    <p class="text-center mb-5" style="color: var(--text-dim);">Authorize Telebirr sequences for automatic user redemption.</p>
+                <div class="glass-card" style="max-width: 600px; margin: 0 auto; border: 2px dashed var(--primary-color);">
+                    <h2 style="text-align: center; margin-bottom: 20px;">Verification Node</h2>
+                    <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px;">Authorize Telebirr IDs for automatic redemption.</p>
                     <form id="verify-id-form">
                         <div class="form-group">
-                            <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">New Sequence ID</label>
-                            <input type="text" id="new-transaction-id" required placeholder="e.g. 4HG78JK92L" style="width: 100%; padding: 18px; background: var(--surface); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
+                            <label>New Sequence ID</label>
+                            <input type="text" id="new-transaction-id" required placeholder="e.g. 4HG78JK92L">
                         </div>
-                        <button type="submit" class="btn btn-primary" id="add-id-btn" style="width: 100%; margin-top: 30px; height: 60px;">Authorize ID</button>
+                        <button type="submit" class="btn btn-primary btn-lg" id="add-id-btn" style="width: 100%;">Authorize ID</button>
                     </form>
-                    <div class="mt-5">
-                        <h4 style="font-weight: 800; margin-bottom: 24px;">Recent Sequence History</h4>
-                        <ul id="verified-ids-list" style="list-style: none; padding: 0; max-height: 300px; overflow-y: auto;">
+                    <div style="margin-top: 40px;">
+                        <h4 style="margin-bottom: 20px;">Recent History</h4>
+                        <ul id="verified-ids-list" style="list-style: none; padding: 0; max-height: 250px; overflow-y: auto;">
                             <!-- Verified IDs loaded dynamically -->
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div id="admin-denied" style="display: none;" class="text-center">
-                <div class="glass" style="display: inline-block; padding: 60px; border-radius: 40px; border: 1px solid var(--danger);">
-                    <h2 style="font-weight: 900; color: var(--danger); font-size: 3rem; margin-bottom: 24px;">Restricted Area</h2>
-                    <p style="color: var(--text-dim); font-size: 1.2rem; margin-bottom: 40px;">Invalid administrative credentials detected.</p>
+            <div id="admin-denied" style="display: none; text-align: center;">
+                <div class="glass-card" style="display: inline-block; padding: 60px; border: 2px solid #ef4444;">
+                    <h2 style="color: #ef4444; font-size: 2.5rem; margin-bottom: 20px;">Restricted Access</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 30px;">Invalid administrative credentials detected.</p>
                     <a href="index.html" class="btn btn-primary">Return to Safety</a>
                 </div>
             </div>
@@ -143,28 +145,28 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-info">
-                    <h3>DigiLib</h3>
-                    <p>Providing exclusive access to premium digital content.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
+                <div>
+                    <h3 style="margin-bottom: 20px;">DigiLib</h3>
+                    <p style="opacity: 0.7;">Your premium destination for exclusive digital content.</p>
                 </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="auth.html">Login</a></li>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Quick Links</h4>
+                    <ul style="list-style: none; opacity: 0.7;">
+                        <li style="margin-bottom: 10px;"><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: white; text-decoration: none;">Terms of Service</a></li>
                     </ul>
                 </div>
-                <div class="footer-social">
-                    <h4>Follow Us</h4>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Follow Us</h4>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; opacity: 0.5; font-size: 0.9rem;">
                 <p>&copy; 2026 DigiLib. All rights reserved.</p>
             </div>
         </div>

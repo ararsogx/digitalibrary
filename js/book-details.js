@@ -34,18 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
         bookDetailContainer.innerHTML = `
             <div class="book-detail-grid">
                 <div class="detail-img" data-aos="fade-right">
-                    <div class="image-glow-wrapper">
-                        <img src="${book.coverUrl || 'https://via.placeholder.com/400x600?text=No+Cover'}" alt="${book.title}">
-                    </div>
+                    <img src="${book.coverUrl || 'https://via.placeholder.com/400x600?text=No+Cover'}" alt="${book.title}">
                 </div>
                 <div class="detail-info" data-aos="fade-left">
-                    <span class="category">Premium Experience</span>
+                    <span class="category">Premium Edition</span>
                     <h1>${book.title}</h1>
-                    <p class="author">${book.author}</p>
+                    <span class="author">By ${book.author}</span>
                     
                     <div class="price-tag">
-                        <span class="price-label">Valuation</span>
-                        <span class="price-value">${isPremium ? `${price} ETB` : 'FREE'}</span>
+                        ${isPremium ? `${price} ETB` : 'FREE'}
                     </div>
 
                     <div class="description">
@@ -56,15 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${hasAccess ? 
                             (book.fileUrl ? 
                                 `<a href="${book.fileUrl}" target="_blank" class="btn btn-primary btn-lg">
-                                    Unlock Edition
+                                    Read Now
                                 </a>` : 
                                 `<p class="text-muted">Digital asset pending.</p>`) :
                             `<button id="buy-btn" class="btn btn-primary btn-lg">
-                                Get Lifetime Access
+                                Buy Now
                             </button>`
                         }
                         <a href="index.html" class="btn btn-outline btn-lg">
-                            <i class="fas fa-chevron-left"></i>
+                            <i class="fas fa-arrow-left"></i> Back
                         </a>
                     </div>
                 </div>
