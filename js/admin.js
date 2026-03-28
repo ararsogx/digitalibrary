@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Seed Sample Books Logic
     if (seedBtn) {
+        seedBtn.style.display = 'none'; // Hide seeding for single-book model
         seedBtn.addEventListener('click', async () => {
             if (confirm('Add two sample books to your library?')) {
                 seedBtn.disabled = true;

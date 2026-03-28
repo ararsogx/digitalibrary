@@ -22,7 +22,7 @@
                 <div class="logo-icon">
                     <i class="fas fa-bolt"></i>
                 </div>
-                <span>Velvet Admin</span>
+                <span>Velvet Control</span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Edition</a></li>
@@ -32,58 +32,56 @@
 
     <div class="section" style="padding-top: 180px;">
         <div class="container">
-            <h1 class="section-title" style="margin-bottom: 80px;">Management Portal</h1>
+            <h1 class="section-title" style="margin-bottom: 80px;">Master Console</h1>
             
             <div id="admin-auth-check" style="display: none;">
                 <!-- Add Book Form -->
                 <div class="auth-container" style="max-width: 800px; margin-bottom: 100px; background: var(--surface); border-radius: 40px; padding: 60px; border: 1px solid var(--glass-border); box-shadow: 0 40px 100px rgba(0,0,0,0.4);">
-                    <h2 class="text-center mb-5" style="font-weight: 900; font-size: 2.2rem; letter-spacing: -0.04em;">Initialize Asset</h2>
+                    <h2 class="text-center mb-5" style="font-weight: 900; font-size: 2.2rem; letter-spacing: -0.04em;">Initialize Product</h2>
                     <form id="add-book-form">
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
                             <div class="form-group">
-                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Asset Title</label>
+                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Product Title</label>
                                 <input type="text" id="book-title" required placeholder="e.g. Velvet Night" style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
                             </div>
                             <div class="form-group">
-                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Creator</label>
+                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Author/Creator</label>
                                 <input type="text" id="book-author" required placeholder="e.g. Ararso GX" style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
                             </div>
                         </div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
                             <div class="form-group">
-                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Classification</label>
+                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Category</label>
                                 <select id="book-category" required style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
                                     <option value="Premium">Premium Edition</option>
-                                    <option value="Standard">Standard Release</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Asset Type</label>
+                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Pricing Type</label>
                                 <select id="book-type" required style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
-                                    <option value="premium">Premium (Paid)</option>
-                                    <option value="free">Free Access</option>
+                                    <option value="premium">Paid Premium</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group" id="price-group" style="margin-top: 30px;">
-                            <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Valuation (ETB)</label>
+                            <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Selling Price (ETB)</label>
                             <input type="number" id="book-price" value="200" min="0" style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
                         </div>
                         <div class="form-group" style="margin-top: 30px;">
-                            <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Briefing</label>
-                            <textarea id="book-description" rows="4" placeholder="Asset overview..." style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);"></textarea>
+                            <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Product Overview</label>
+                            <textarea id="book-description" rows="4" placeholder="Brief overview..." style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);"></textarea>
                         </div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
                             <div class="form-group">
-                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Cover Visualization</label>
+                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Cover Visualization (Image)</label>
                                 <input type="file" id="book-cover" accept="image/*" style="width: 100%; color: var(--text-dim);">
                             </div>
                             <div class="form-group">
-                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Digital Asset (PDF)</label>
+                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Digital Product (PDF)</label>
                                 <input type="file" id="book-file" accept=".pdf" style="width: 100%; color: var(--text-dim);">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="add-btn" style="width: 100%; margin-top: 50px; height: 70px; font-size: 1.2rem;">Commit Asset</button>
+                        <button type="submit" class="btn btn-primary" id="add-btn" style="width: 100%; margin-top: 50px; height: 70px; font-size: 1.2rem;">Launch Product</button>
                         <p id="upload-status" class="mt-4 text-center" style="font-weight: 700; color: var(--secondary);"></p>
                     </form>
                 </div>
@@ -91,13 +89,12 @@
                 <!-- Books Management Table -->
                 <div class="admin-table-container glass" style="border-radius: 40px; padding: 50px; background: var(--surface);">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
-                        <h2 style="font-weight: 900; font-size: 2rem; letter-spacing: -0.04em;">Active Inventory</h2>
-                        <button id="seed-btn" class="btn btn-outline btn-sm">Generate Samples</button>
+                        <h2 style="font-weight: 900; font-size: 2rem; letter-spacing: -0.04em;">Current Product</h2>
                     </div>
                     <table class="admin-table" style="width: 100%; border-collapse: separate; border-spacing: 0 15px;">
                         <thead>
                             <tr style="text-align: left; color: var(--text-dim); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">
-                                <th style="padding: 20px;">Asset</th>
+                                <th style="padding: 20px;">Product</th>
                                 <th style="padding: 20px;">Creator</th>
                                 <th style="padding: 20px;">Status</th>
                                 <th style="padding: 20px;">Control</th>

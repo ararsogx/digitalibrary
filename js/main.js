@@ -93,10 +93,10 @@ function loadSingleFeaturedBook() {
     const heroContainer = document.getElementById('featured-book-hero');
     
     // Fetch only the first premium book to sell
-    db.collection('books').where('type', '==', 'premium').limit(1).get().then(snapshot => {
+    db.collection('books').where('type', '==', 'premium').limit(1).get().then(async snapshot => {
         heroContainer.innerHTML = '';
         if (snapshot.empty) {
-            heroContainer.innerHTML = '<p class="text-center" style="grid-column: 1/-1;">Book currently unavailable.</p>';
+            heroContainer.innerHTML = '<p class="text-center" style="grid-column: 1/-1;">Asset currently unavailable.</p>';
             return;
         }
 
@@ -104,16 +104,25 @@ function loadSingleFeaturedBook() {
         const book = doc.data();
         const bookId = doc.id;
 
+        // Check if user already owns it
+        let ownsBook = false;
+        const user = auth.currentUser;
+        if (user) {
+            const purchaseDoc = await db.collection('users').doc(user.uid).collection('purchasedBooks').doc(bookId).get();
+            ownsBook = purchaseDoc.exists;
+        }
+
         heroContainer.innerHTML = `
             <div class="hero-content" data-aos="fade-right">
-                <span class="category">Exclusive Release</span>
+                <span class="category">Premium Edition</span>
                 <h1>${book.title}</h1>
                 <p>${book.description || 'Experience the digital masterpiece. Instant access to the premium edition.'}</p>
                 <div class="hero-btns">
-                    <a href="book-details.html?id=${bookId}" class="btn btn-primary btn-lg">
-                        Buy Now &mdash; ${book.price} ETB
-                    </a>
-                    <a href="#features" class="btn btn-outline btn-lg">Details</a>
+                    ${ownsBook ? 
+                        `<a href="my-books.html" class="btn btn-primary btn-lg">Read Edition Now</a>` :
+                        `<a href="book-details.html?id=${bookId}" class="btn btn-primary btn-lg">Get It Now &mdash; ${book.price} ETB</a>`
+                    }
+                    <a href="#features" class="btn btn-outline btn-lg">Learn More</a>
                 </div>
             </div>
             <div class="hero-image" data-aos="fade-left">
@@ -124,7 +133,7 @@ function loadSingleFeaturedBook() {
         `;
     }).catch(error => {
         console.error("Error loading featured book:", error);
-        heroContainer.innerHTML = '<p class="text-center">Error loading book details.</p>';
+        heroContainer.innerHTML = '<p class="text-center">Error loading asset details.</p>';
     });
 }
 
