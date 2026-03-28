@@ -11,6 +11,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const bookType = document.getElementById('book-type');
     const priceGroup = document.getElementById('price-group');
+    const cleanupBtn = document.getElementById('cleanup-btn');
+
+    // Cleanup Logic - Keep only one premium book
+    if (cleanupBtn) {
+        cleanupBtn.addEventListener('click', async () => {
+            if (!confirm('This will delete ALL products except your first premium one. Continue?')) return;
+            
+            try {
+                const snapshot = await db.collection('books').get();
+                if (snapshot.empty) return;
+
+                const premiumBooks = snapshot.docs.filter(doc => doc.data().type === 'premium');
+                const others = snapshot.docs.filter(doc => doc.data().type !== 'premium');
+                
+                const batch = db.batch();
+                let keptOne = false;
+
+                // Keep the first premium book found
+                snapshot.docs.forEach((doc, index) => {
+                    const isPremium = doc.data().type === 'premium';
+                    if (isPremium && !keptOne) {
+                        keptOne = true; // This is the one we keep
+                        console.log('Keeping:', doc.data().title);
+                    } else {
+                        // Delete everything else
+                        batch.delete(doc.ref);
+                    }
+                });
+
+                await batch.commit();
+                alert('Cleanup successful. Only your primary premium product remains.');
+                fetchAdminBooks();
+            } catch (error) {
+                console.error("Cleanup error:", error);
+                alert("Error during cleanup: " + error.message);
+            }
+        });
+    }
 
     // Transaction Verification Logic
     const verifyIdForm = document.getElementById('verify-id-form');
@@ -163,13 +201,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Fetch Admin Books
-    function fetchAdminBooks() {
+    async function fetchAdminBooks() {
         adminBooksList.innerHTML = '<tr><td colspan="4" class="text-center">Loading...</td></tr>';
         
-        db.collection('books').orderBy('createdAt', 'desc').get().then(snapshot => {
+        try {
+            const snapshot = await db.collection('books').orderBy('createdAt', 'desc').get();
             adminBooksList.innerHTML = '';
             
-            if (snapshot.empty) {
+            // If we have a book, disable the add form
+            if (!snapshot.empty) {
+                addBtn.disabled = true;
+                addBtn.textContent = 'Single Product Active (Delete to change)';
+                addBtn.style.opacity = '0.5';
+                addBtn.style.cursor = 'not-allowed';
+            } else {
+                addBtn.disabled = false;
+                addBtn.textContent = 'Launch Product';
+                addBtn.style.opacity = '1';
+                addBtn.style.cursor = 'pointer';
+                
                 adminBooksList.innerHTML = '<tr><td colspan="4" class="text-center">No books found.</td></tr>';
                 return;
             }
