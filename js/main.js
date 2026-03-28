@@ -96,16 +96,20 @@ function loadSingleFeaturedBook() {
 
         heroContainer.innerHTML = `
             <div class="hero-content" data-aos="fade-right">
-                <span class="category" style="background: var(--primary-color); color: white; margin-bottom: 20px; display: inline-block;">Premium Release</span>
-                <h1>${book.title}</h1>
-                <p>${book.description || 'Get exclusive access to this premium digital content.'}</p>
-                <div class="hero-btns">
-                    <a href="book-details.html?id=${bookId}" class="btn btn-primary btn-lg">Get It Now - ${book.price} Birr</a>
-                    <a href="#features" class="btn btn-outline btn-lg">Learn More</a>
+                <span class="category">Exclusive Premium Release</span>
+                <h1 style="font-size: clamp(2.5rem, 5vw, 4rem);">${book.title}</h1>
+                <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 40px; opacity: 0.9;">${book.description || 'Get exclusive access to this premium digital content. Available for instant reading after purchase.'}</p>
+                <div class="hero-btns" style="display: flex; gap: 20px;">
+                    <a href="book-details.html?id=${bookId}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-shopping-bag"></i> Get It Now - ${book.price} Birr
+                    </a>
+                    <a href="#features" class="btn btn-outline btn-lg">View Details</a>
                 </div>
             </div>
-            <div class="hero-image" data-aos="fade-left">
-                <img src="${book.coverUrl || 'https://images.unsplash.com/photo-1481627564523-44752a74a06f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'}" alt="${book.title}">
+            <div class="hero-image" data-aos="fade-left" style="perspective: 1000px;">
+                <img src="${book.coverUrl || 'https://images.unsplash.com/photo-1481627564523-44752a74a06f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'}" 
+                     alt="${book.title}" 
+                     style="transform: rotateY(-15deg) rotateX(5deg); border-radius: 20px; box-shadow: -20px 20px 50px rgba(0,0,0,0.2);">
             </div>
         `;
     }).catch(error => {
@@ -122,19 +126,20 @@ function initNightMode() {
     nightModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
     nightModeToggle.style.cssText = `
         position: fixed;
-        bottom: 20px;
-        right: 20px;
+        bottom: 30px;
+        right: 30px;
         background: var(--primary-color);
         color: white;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+        width: 56px;
+        height: 56px;
+        border-radius: 18px;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
         z-index: 1000;
-        box-shadow: var(--shadow);
+        box-shadow: var(--shadow-lg);
+        font-size: 1.2rem;
     `;
     document.body.appendChild(nightModeToggle);
 
