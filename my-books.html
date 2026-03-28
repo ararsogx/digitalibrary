@@ -15,36 +15,36 @@
     <meta name="apple-mobile-web-app-title" content="DigiLib">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2702/2702134.png">
 </head>
-<body style="background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.05), transparent), radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.05), transparent); min-height: 100vh;">
-    <nav class="navbar glass">
-        <div class="container">
+<body style="background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.08), transparent), radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.05), transparent); min-height: 100vh;">
+    <nav class="navbar">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
             <a href="index.html" class="logo">
-                <div class="logo-icon" style="width: 40px; height: 40px; background: var(--primary-color); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-book-open"></i>
+                <div class="logo-icon">
+                    <i class="fas fa-bolt"></i>
                 </div>
-                <span>DigiLib</span>
+                <span>Velvet</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li id="my-books-link" class="active"><a href="my-books.html">Purchases</a></li>
-                <li id="admin-link" style="display: none;"><a href="admin.html">Dashboard</a></li>
+                <li><a href="index.html">Edition</a></li>
+                <li id="my-books-link" class="active"><a href="my-books.html">Library</a></li>
+                <li id="admin-link" style="display: none;"><a href="admin.html">Portal</a></li>
                 <li id="user-profile">
-                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(99, 102, 241, 0.1); padding: 6px 16px; border-radius: 100px;">
-                        <span id="user-email" style="font-weight: 600; color: var(--primary-color);"></span>
-                        <button id="logout-btn" class="btn btn-outline btn-sm" style="border: none; padding: 0; color: var(--danger);"><i class="fas fa-sign-out-alt"></i></button>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <span id="user-email" style="font-weight: 700; font-size: 0.9rem; opacity: 0.8;"></span>
+                        <button id="logout-btn" class="btn btn-outline btn-sm" style="padding: 8px 15px;"><i class="fas fa-power-off"></i></button>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <div class="section" style="padding-top: 150px;">
+    <div class="section" style="padding-top: 180px;">
         <div class="container">
-            <h1 class="section-title" style="font-weight: 800;">My Digital Purchases</h1>
-            <p class="text-center mb-5" style="color: var(--gray); font-weight: 500;">Access all your purchased premium content here.</p>
+            <h1 class="section-title" style="margin-bottom: 24px;">Your Private Collection</h1>
+            <p class="text-center mb-5" style="color: var(--text-dim); font-size: 1.2rem; font-weight: 400;">Access your authenticated premium digital editions.</p>
             
-            <div id="my-books-list" class="book-grid">
-                <div class="loader"></div>
+            <div id="my-books-list" class="features-grid" style="margin-top: 80px;">
+                <div class="loader" style="margin: 0 auto;"></div>
             </div>
         </div>
     </div>

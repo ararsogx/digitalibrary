@@ -47,17 +47,23 @@ document.addEventListener('DOMContentLoaded', () => {
             snapshot.forEach(doc => {
                 const data = doc.data();
                 const li = document.createElement('li');
-                li.style.display = 'flex';
-                li.style.justifyContent = 'space-between';
-                li.style.padding = '8px';
-                li.style.borderBottom = '1px solid #eee';
+                li.style.cssText = `
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 20px;
+                    background: var(--surface);
+                    border-radius: 16px;
+                    margin-bottom: 12px;
+                    border: 1px solid var(--glass-border);
+                `;
                 
                 const status = data.used ? 
-                    `<span style="color: var(--danger);">Used by ${data.usedBy.substring(0,5)}...</span>` : 
-                    '<span style="color: var(--success);">Available</span>';
+                    `<span style="color: var(--danger); font-weight: 700; font-size: 0.8rem;">REDEEMED BY ${data.usedBy.substring(0,8)}...</span>` : 
+                    '<span style="color: var(--secondary); font-weight: 700; font-size: 0.8rem;">AVAILABLE</span>';
                 
                 li.innerHTML = `
-                    <strong>${doc.id}</strong>
+                    <strong style="letter-spacing: 1px;">${doc.id}</strong>
                     ${status}
                 `;
                 verifiedIdsList.appendChild(li);
@@ -173,11 +179,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>${book.title}</td>
-                    <td>${book.author}</td>
-                    <td>${book.category}</td>
-                    <td class="action-btns">
-                        <button class="btn btn-sm btn-danger delete-btn" data-id="${bookId}">Delete</button>
+                    <td style="padding: 20px;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <img src="${book.coverUrl || 'https://via.placeholder.com/40x60?text=No+Cover'}" style="width: 40px; height: 60px; border-radius: 8px; object-fit: cover;">
+                            <span style="font-weight: 700;">${book.title}</span>
+                        </div>
+                    </td>
+                    <td style="padding: 20px; font-weight: 500; color: var(--text-dim);">${book.author}</td>
+                    <td style="padding: 20px;">
+                        <span class="category" style="font-size: 0.7rem; background: ${book.type === 'premium' ? 'rgba(244, 63, 94, 0.1)' : 'rgba(16, 185, 129, 0.1)'}; color: ${book.type === 'premium' ? 'var(--accent)' : 'var(--secondary)'};">
+                            ${book.type}
+                        </span>
+                    </td>
+                    <td style="padding: 20px;">
+                        <div class="action-btns">
+                            <button onclick="deleteBook('${doc.id}')" class="btn btn-outline btn-sm" style="border-color: var(--danger); color: var(--danger); padding: 8px 12px;"><i class="fas fa-trash"></i></button>
+                        </div>
                     </td>
                 `;
                 adminBooksList.appendChild(tr);

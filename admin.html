@@ -15,120 +15,126 @@
     <meta name="apple-mobile-web-app-title" content="DigiLib">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2702/2702134.png">
 </head>
-<body style="background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.05), transparent), radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.05), transparent); min-height: 100vh;">
-    <nav class="navbar glass">
-        <div class="container">
+<body style="background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.08), transparent), radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.05), transparent); min-height: 100vh;">
+    <nav class="navbar">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
             <a href="index.html" class="logo">
-                <div class="logo-icon" style="width: 40px; height: 40px; background: var(--primary-color); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-book-open"></i>
+                <div class="logo-icon">
+                    <i class="fas fa-bolt"></i>
                 </div>
-                <span>DigiLib Admin</span>
+                <span>Velvet Admin</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Edition</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="section" style="padding-top: 150px;">
+    <div class="section" style="padding-top: 180px;">
         <div class="container">
-            <h1 class="section-title" style="font-weight: 800;">Admin Dashboard</h1>
+            <h1 class="section-title" style="margin-bottom: 80px;">Management Portal</h1>
             
             <div id="admin-auth-check" style="display: none;">
                 <!-- Add Book Form -->
-                <div class="auth-container glass" style="max-width: 600px; margin-bottom: 50px; border-radius: 24px; padding: 40px;">
-                    <h2 class="text-center mb-4" style="font-weight: 700;">Add New Book</h2>
+                <div class="auth-container" style="max-width: 800px; margin-bottom: 100px; background: var(--surface); border-radius: 40px; padding: 60px; border: 1px solid var(--glass-border); box-shadow: 0 40px 100px rgba(0,0,0,0.4);">
+                    <h2 class="text-center mb-5" style="font-weight: 900; font-size: 2.2rem; letter-spacing: -0.04em;">Initialize Asset</h2>
                     <form id="add-book-form">
-                        <div class="form-group">
-                            <label for="book-title" style="font-weight: 600;">Book Title</label>
-                            <input type="text" id="book-title" required placeholder="e.g. The Art of Coding">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                            <div class="form-group">
+                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Asset Title</label>
+                                <input type="text" id="book-title" required placeholder="e.g. Velvet Night" style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
+                            </div>
+                            <div class="form-group">
+                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Creator</label>
+                                <input type="text" id="book-author" required placeholder="e.g. Ararso GX" style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="book-author" style="font-weight: 600;">Author</label>
-                            <input type="text" id="book-author" required placeholder="e.g. John Doe">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                            <div class="form-group">
+                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Classification</label>
+                                <select id="book-category" required style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
+                                    <option value="Premium">Premium Edition</option>
+                                    <option value="Standard">Standard Release</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Asset Type</label>
+                                <select id="book-type" required style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
+                                    <option value="premium">Premium (Paid)</option>
+                                    <option value="free">Free Access</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="book-category" style="font-weight: 600;">Category</label>
-                            <select id="book-category" required>
-                                <option value="Fiction">Fiction</option>
-                                <option value="Non-Fiction">Non-Fiction</option>
-                                <option value="Science">Science</option>
-                                <option value="Technology">Technology</option>
-                                <option value="History">History</option>
-                            </select>
+                        <div class="form-group" id="price-group" style="margin-top: 30px;">
+                            <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Valuation (ETB)</label>
+                            <input type="number" id="book-price" value="200" min="0" style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
                         </div>
-                        <div class="form-group">
-                            <label for="book-type" style="font-weight: 600;">Book Type</label>
-                            <select id="book-type" required>
-                                <option value="free">Free</option>
-                                <option value="premium">Premium (Paid)</option>
-                            </select>
+                        <div class="form-group" style="margin-top: 30px;">
+                            <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Briefing</label>
+                            <textarea id="book-description" rows="4" placeholder="Asset overview..." style="width: 100%; padding: 18px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);"></textarea>
                         </div>
-                        <div class="form-group" id="price-group" style="display: none;">
-                            <label for="book-price" style="font-weight: 600;">Price (Birr)</label>
-                            <input type="number" id="book-price" value="0" min="0">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                            <div class="form-group">
+                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Cover Visualization</label>
+                                <input type="file" id="book-cover" accept="image/*" style="width: 100%; color: var(--text-dim);">
+                            </div>
+                            <div class="form-group">
+                                <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">Digital Asset (PDF)</label>
+                                <input type="file" id="book-file" accept=".pdf" style="width: 100%; color: var(--text-dim);">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="book-description" style="font-weight: 600;">Description</label>
-                            <textarea id="book-description" rows="4" placeholder="Describe the book content..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="book-cover" style="font-weight: 600;">Book Cover Image</label>
-                            <input type="file" id="book-cover" accept="image/*">
-                        </div>
-                        <div class="form-group">
-                            <label for="book-file" style="font-weight: 600;">Book File (PDF/EPUB)</label>
-                            <input type="file" id="book-file" accept=".pdf,.epub">
-                        </div>
-                        <button type="submit" class="btn btn-primary" id="add-btn" style="width: 100%; border-radius: 12px; height: 50px;">Add Book</button>
-                        <p id="upload-status" class="mt-2 text-center" style="font-weight: 600;"></p>
+                        <button type="submit" class="btn btn-primary" id="add-btn" style="width: 100%; margin-top: 50px; height: 70px; font-size: 1.2rem;">Commit Asset</button>
+                        <p id="upload-status" class="mt-4 text-center" style="font-weight: 700; color: var(--secondary);"></p>
                     </form>
                 </div>
 
                 <!-- Books Management Table -->
-                <div class="admin-table-container glass" style="border-radius: 24px; padding: 30px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-                        <h2 class="mb-0" style="font-weight: 700;">Manage Books</h2>
-                        <button id="seed-btn" class="btn btn-outline btn-sm" style="border-radius: 100px;">Seed Sample Books</button>
+                <div class="admin-table-container glass" style="border-radius: 40px; padding: 50px; background: var(--surface);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                        <h2 style="font-weight: 900; font-size: 2rem; letter-spacing: -0.04em;">Active Inventory</h2>
+                        <button id="seed-btn" class="btn btn-outline btn-sm">Generate Samples</button>
                     </div>
-                    <table class="admin-table">
+                    <table class="admin-table" style="width: 100%; border-collapse: separate; border-spacing: 0 15px;">
                         <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>Category</th>
-                                <th>Actions</th>
+                            <tr style="text-align: left; color: var(--text-dim); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">
+                                <th style="padding: 20px;">Asset</th>
+                                <th style="padding: 20px;">Creator</th>
+                                <th style="padding: 20px;">Status</th>
+                                <th style="padding: 20px;">Control</th>
                             </tr>
                         </thead>
                         <tbody id="admin-books-list">
-                            <!-- Books loaded dynamically -->
+                            <!-- Loaded via JS -->
                         </tbody>
                     </table>
                 </div>
 
                 <!-- Transaction Verification Management -->
-                <div class="auth-container glass" style="max-width: 600px; margin-top: 50px; border: 2px dashed var(--primary-color); border-radius: 24px; padding: 40px;">
-                    <h2 class="text-center mb-4" style="font-weight: 700;"><i class="fas fa-check-circle"></i> Authorize Transactions</h2>
-                    <p class="text-muted text-center mb-4">Add valid Telebirr transaction IDs here to allow automatic user verification.</p>
+                <div class="auth-container" style="max-width: 800px; margin-top: 100px; background: var(--bg); border: 2px dashed var(--primary); border-radius: 40px; padding: 60px;">
+                    <h2 class="text-center mb-4" style="font-weight: 900; font-size: 2rem;">Verification Node</h2>
+                    <p class="text-center mb-5" style="color: var(--text-dim);">Authorize Telebirr sequences for automatic user redemption.</p>
                     <form id="verify-id-form">
                         <div class="form-group">
-                            <label for="new-transaction-id" style="font-weight: 600;">New Transaction ID</label>
-                            <input type="text" id="new-transaction-id" required placeholder="e.g. 4HG78JK92L">
+                            <label style="display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim);">New Sequence ID</label>
+                            <input type="text" id="new-transaction-id" required placeholder="e.g. 4HG78JK92L" style="width: 100%; padding: 18px; background: var(--surface); border: 1px solid var(--glass-border); border-radius: 16px; color: var(--text);">
                         </div>
-                        <button type="submit" class="btn btn-primary" id="add-id-btn" style="width: 100%; border-radius: 12px; height: 50px;">Add Valid ID</button>
+                        <button type="submit" class="btn btn-primary" id="add-id-btn" style="width: 100%; margin-top: 30px; height: 60px;">Authorize ID</button>
                     </form>
-                    <div class="mt-4">
-                        <h4 style="font-weight: 700;">Recent Authorized IDs</h4>
-                        <ul id="verified-ids-list" style="list-style: none; padding: 0; max-height: 200px; overflow-y: auto;">
+                    <div class="mt-5">
+                        <h4 style="font-weight: 800; margin-bottom: 24px;">Recent Sequence History</h4>
+                        <ul id="verified-ids-list" style="list-style: none; padding: 0; max-height: 300px; overflow-y: auto;">
                             <!-- Verified IDs loaded dynamically -->
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div id="admin-denied" style="display: none;" class="text-center glass p-5" style="border-radius: 24px; padding: 50px;">
-                <h2 style="font-weight: 800; color: var(--danger);">Access Denied</h2>
-                <p style="font-weight: 500;">You do not have administrative privileges. <a href="index.html" style="color: var(--primary-color); font-weight: 700;">Return home</a></p>
+            <div id="admin-denied" style="display: none;" class="text-center">
+                <div class="glass" style="display: inline-block; padding: 60px; border-radius: 40px; border: 1px solid var(--danger);">
+                    <h2 style="font-weight: 900; color: var(--danger); font-size: 3rem; margin-bottom: 24px;">Restricted Area</h2>
+                    <p style="color: var(--text-dim); font-size: 1.2rem; margin-bottom: 40px;">Invalid administrative credentials detected.</p>
+                    <a href="index.html" class="btn btn-primary">Return to Safety</a>
+                </div>
             </div>
         </div>
     </div>

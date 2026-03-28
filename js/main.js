@@ -86,7 +86,7 @@ function loadSingleFeaturedBook() {
     db.collection('books').where('type', '==', 'premium').limit(1).get().then(snapshot => {
         heroContainer.innerHTML = '';
         if (snapshot.empty) {
-            heroContainer.innerHTML = '<p class="text-center">Book currently unavailable.</p>';
+            heroContainer.innerHTML = '<p class="text-center" style="grid-column: 1/-1;">Book currently unavailable.</p>';
             return;
         }
 
@@ -96,20 +96,23 @@ function loadSingleFeaturedBook() {
 
         heroContainer.innerHTML = `
             <div class="hero-content" data-aos="fade-right">
-                <span class="category">Exclusive Premium Release</span>
-                <h1 style="font-size: clamp(2.5rem, 5vw, 4rem);">${book.title}</h1>
-                <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 40px; opacity: 0.9;">${book.description || 'Get exclusive access to this premium digital content. Available for instant reading after purchase.'}</p>
+                <span class="category" style="margin-bottom: 24px; display: inline-block; background: rgba(124, 58, 237, 0.1); color: var(--primary);">Exclusive Release</span>
+                <h1 style="margin-bottom: 32px; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.9;">${book.title}</h1>
+                <p style="margin-bottom: 48px; font-size: 1.25rem; opacity: 0.8; max-width: 500px;">${book.description || 'Experience the digital masterpiece. Instant access to the premium edition.'}</p>
                 <div class="hero-btns" style="display: flex; gap: 20px;">
                     <a href="book-details.html?id=${bookId}" class="btn btn-primary btn-lg">
-                        <i class="fas fa-shopping-bag"></i> Get It Now - ${book.price} Birr
+                        Buy Now &mdash; ${book.price} ETB
                     </a>
-                    <a href="#features" class="btn btn-outline btn-lg">View Details</a>
+                    <a href="#features" class="btn btn-outline btn-lg">Details</a>
                 </div>
             </div>
-            <div class="hero-image" data-aos="fade-left" style="perspective: 1000px;">
-                <img src="${book.coverUrl || 'https://images.unsplash.com/photo-1481627564523-44752a74a06f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'}" 
-                     alt="${book.title}" 
-                     style="transform: rotateY(-15deg) rotateX(5deg); border-radius: 20px; box-shadow: -20px 20px 50px rgba(0,0,0,0.2);">
+            <div class="hero-image" data-aos="fade-left">
+                <div style="position: relative;">
+                    <div style="position: absolute; inset: -20px; background: var(--primary); filter: blur(60px); opacity: 0.15; z-index: -1;"></div>
+                    <img src="${book.coverUrl || 'https://images.unsplash.com/photo-1481627564523-44752a74a06f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'}" 
+                         alt="${book.title}" 
+                         style="width: 100%; border-radius: 40px; transform: perspective(1000px) rotateY(-5deg);">
+                </div>
             </div>
         `;
     }).catch(error => {
@@ -236,41 +239,38 @@ function loadFeaturedBooks() {
 // Helper function to create book card
 function createBookCard(book, id) {
     const div = document.createElement('div');
-    div.className = 'book-card glass';
+    div.className = 'feature-card';
     div.style.cssText = `
-        border-radius: 20px;
-        overflow: hidden;
-        transition: var(--transition);
-        border: 1px solid var(--glass-border);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     `;
     div.setAttribute('data-aos', 'fade-up');
     
     const isPremium = book.type === 'premium';
     
     div.innerHTML = `
-        <div style="position: relative; overflow: hidden; height: 320px;">
+        <div style="position: relative; border-radius: 20px; overflow: hidden; height: 350px;">
             <img src="${book.coverUrl || 'https://via.placeholder.com/220x300?text=No+Cover'}" alt="${book.title}" 
-                 style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);" 
-                 onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-            <div style="position: absolute; top: 15px; right: 15px;">
-                <span class="category" style="background: ${isPremium ? 'var(--accent-color)' : 'var(--success)'}; color: white; box-shadow: var(--shadow);">
-                    ${isPremium ? `${book.price} Birr` : 'FREE'}
+                 style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; bottom: 20px; left: 20px;">
+                <span class="category" style="background: var(--primary); color: white;">
+                    ${isPremium ? `${book.price} ETB` : 'FREE'}
                 </span>
             </div>
         </div>
-        <div class="book-info" style="padding: 20px;">
-            <h3 style="font-weight: 700; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${book.title}</h3>
-            <p class="book-author" style="color: var(--gray); font-size: 0.9rem; margin-bottom: 20px; font-weight: 600;">by ${book.author}</p>
-            <div class="book-actions" style="display: flex; gap: 10px;">
-                <a href="book-details.html?id=${id}" class="btn btn-primary btn-sm" style="flex: 1; border-radius: 10px;">
-                    <i class="fas fa-eye"></i> View
-                </a>
-                ${isPremium ? `
-                <button onclick="addToCart(${JSON.stringify(book).replace(/"/g, '&quot;')}, '${id}')" 
-                        class="btn btn-outline btn-sm" style="width: 45px; border-radius: 10px; padding: 0;">
-                    <i class="fas fa-cart-plus"></i>
-                </button>` : ''}
-            </div>
+        <div style="flex-grow: 1;">
+            <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">${book.title}</h3>
+            <p style="color: var(--text-dim); font-size: 0.95rem;">${book.author}</p>
+        </div>
+        <div style="display: flex; gap: 15px;">
+            <a href="book-details.html?id=${id}" class="btn btn-primary btn-sm" style="flex-grow: 1;">Access</a>
+            ${isPremium ? `
+            <button onclick="addToCart(${JSON.stringify(book).replace(/"/g, '&quot;')}, '${id}')" 
+                    class="btn btn-outline btn-sm" style="width: 50px; padding: 0;">
+                <i class="fas fa-plus"></i>
+            </button>` : ''}
         </div>
     `;
     return div;

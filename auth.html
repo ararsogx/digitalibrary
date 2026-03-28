@@ -15,25 +15,25 @@
     <meta name="apple-mobile-web-app-title" content="DigiLib">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2702/2702134.png">
 </head>
-<body style="background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.05), transparent), radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.05), transparent); min-height: 100vh;">
-    <nav class="navbar glass">
-        <div class="container">
+<body style="background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.08), transparent), radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.05), transparent); min-height: 100vh;">
+    <nav class="navbar">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
             <a href="index.html" class="logo">
-                <div class="logo-icon" style="width: 40px; height: 40px; background: var(--primary-color); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-book-open"></i>
+                <div class="logo-icon">
+                    <i class="fas fa-bolt"></i>
                 </div>
-                <span>DigiLib</span>
+                <span>Velvet</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Edition</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="auth-container glass" style="margin-top: 150px; border-radius: 24px; padding: 50px;">
-        <div class="auth-tabs" style="border-bottom: 2px solid rgba(0,0,0,0.05);">
-            <div id="login-tab" class="auth-tab active" style="font-weight: 700;">Login</div>
-            <div id="signup-tab" class="auth-tab" style="font-weight: 700;">Sign Up</div>
+    <div class="auth-container" style="margin-top: 180px; max-width: 500px; background: var(--surface); border-radius: 40px; padding: 60px; border: 1px solid var(--glass-border); box-shadow: 0 40px 100px rgba(0,0,0,0.4);">
+        <div class="auth-tabs" style="border-bottom: 1px solid var(--glass-border); margin-bottom: 48px;">
+            <div id="login-tab" class="auth-tab active" style="font-size: 1.2rem; font-weight: 800; padding-bottom: 20px;">Identity</div>
+            <div id="signup-tab" class="auth-tab" style="font-size: 1.2rem; font-weight: 800; padding-bottom: 20px;">New Account</div>
         </div>
 
         <!-- Login Form -->

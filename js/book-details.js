@@ -32,39 +32,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         bookDetailContainer.innerHTML = `
-            <div class="book-detail-grid glass p-5" style="border-radius: 32px; align-items: center;">
+            <div class="book-detail-grid" style="align-items: center;">
                 <div class="detail-img" data-aos="fade-right">
-                    <img src="${book.coverUrl || 'https://via.placeholder.com/400x600?text=No+Cover'}" alt="${book.title}" style="box-shadow: -20px 20px 50px rgba(0,0,0,0.2);">
+                    <div style="position: relative;">
+                        <div style="position: absolute; inset: -30px; background: var(--primary); filter: blur(80px); opacity: 0.1; z-index: -1;"></div>
+                        <img src="${book.coverUrl || 'https://via.placeholder.com/400x600?text=No+Cover'}" 
+                             alt="${book.title}" 
+                             style="width: 100%; border-radius: 40px; transform: perspective(1000px) rotateY(-8deg);">
+                    </div>
                 </div>
                 <div class="detail-info" data-aos="fade-left">
-                    <span class="category">${book.category || 'Premium Content'}</span>
-                    <h1 style="font-weight: 800; line-height: 1.1;">${book.title}</h1>
-                    <p class="author" style="font-size: 1.2rem; font-weight: 600; color: var(--primary-color); margin-bottom: 24px;">by ${book.author}</p>
+                    <span class="category" style="margin-bottom: 24px; display: inline-block; background: rgba(124, 58, 237, 0.1); color: var(--primary);">Premium Experience</span>
+                    <h1 style="margin-bottom: 16px; font-size: clamp(3rem, 6vw, 5rem); line-height: 0.95;">${book.title}</h1>
+                    <p class="author" style="font-size: 1.5rem; font-weight: 500; color: var(--text-dim); margin-bottom: 40px;">${book.author}</p>
                     
-                    <div style="margin-bottom: 30px; display: flex; gap: 10px; align-items: center;">
-                        <span class="category" style="background: ${isPremium ? 'rgba(245, 158, 11, 0.1)' : 'rgba(16, 185, 129, 0.1)'}; color: ${isPremium ? 'var(--accent-color)' : 'var(--success)'}; margin-bottom: 0;">
-                            ${isPremium ? `${price} Birr` : 'Free Access'}
-                        </span>
-                        ${hasAccess && isPremium ? '<span class="category" style="background: rgba(16, 185, 129, 0.1); color: var(--success); margin-bottom: 0;"><i class="fas fa-check-circle"></i> Purchased</span>' : ''}
+                    <div style="margin-bottom: 48px; display: flex; gap: 20px; align-items: center;">
+                        <div style="padding: 15px 30px; background: var(--surface); border-radius: 20px; border: 1px solid var(--glass-border);">
+                            <span style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 4px;">Price</span>
+                            <span style="font-size: 1.8rem; font-weight: 800; color: var(--text);">${isPremium ? `${price} ETB` : 'FREE'}</span>
+                        </div>
+                        ${hasAccess && isPremium ? '<div style="color: var(--secondary); font-weight: 700;"><i class="fas fa-circle-check"></i> Ownership Confirmed</div>' : ''}
                     </div>
 
-                    <div class="description" style="margin-bottom: 40px; color: var(--gray); font-size: 1.1rem; line-height: 1.7;">
-                        <p>${book.description || 'Get exclusive access to this premium digital content. Available for instant reading or download after payment verification.'}</p>
+                    <div class="description" style="margin-bottom: 60px; color: var(--text-dim); font-size: 1.25rem; line-height: 1.7; max-width: 600px;">
+                        <p>${book.description || 'Access the complete premium digital edition. Your purchase includes lifetime access and future updates.'}</p>
                     </div>
 
-                    <div class="detail-actions" style="display: flex; gap: 20px;">
+                    <div class="detail-actions" style="display: flex; gap: 25px; align-items: center;">
                         ${hasAccess ? 
                             (book.fileUrl ? 
-                                `<a href="${book.fileUrl}" target="_blank" class="btn btn-primary btn-lg" style="border-radius: 15px;">
-                                    <i class="fas fa-book-reader"></i> Read / Download Now
+                                `<a href="${book.fileUrl}" target="_blank" class="btn btn-primary btn-lg">
+                                    Unlock Edition
                                 </a>` : 
-                                `<p class="text-muted">No digital file available for this book.</p>`) :
-                            `<button id="buy-btn" class="btn btn-primary btn-lg" style="border-radius: 15px;">
-                                <i class="fas fa-shopping-bag"></i> Unlock for ${price} Birr
+                                `<p class="text-muted">Digital asset pending.</p>`) :
+                            `<button id="buy-btn" class="btn btn-primary btn-lg">
+                                Get Lifetime Access
                             </button>`
                         }
-                        <a href="index.html" class="btn btn-outline btn-lg" style="border-radius: 15px; border: none;">
-                            <i class="fas fa-arrow-left"></i> Back to Home
+                        <a href="index.html" class="btn btn-outline btn-lg">
+                            <i class="fas fa-chevron-left"></i>
                         </a>
                     </div>
                 </div>

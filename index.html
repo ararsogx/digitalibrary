@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Featured Book | DigiLib</title>
+    <title>Velvet Edition | Exclusive Premium Release</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- PWA Support -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#6c5ce7">
+    <meta name="theme-color" content="#7c3aed">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="DigiLib">
@@ -18,40 +18,35 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar glass">
-        <div class="container">
+    <nav class="navbar">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
             <a href="index.html" class="logo">
-                <div class="logo-icon" style="width: 40px; height: 40px; background: var(--primary-color); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-book-open"></i>
+                <div class="logo-icon">
+                    <i class="fas fa-bolt"></i>
                 </div>
-                <span>DigiLib</span>
+                <span>Velvet</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li id="my-books-link" style="display: none;"><a href="my-books.html">Purchases</a></li>
-                <li id="admin-link" style="display: none;"><a href="admin.html">Dashboard</a></li>
+                <li><a href="index.html" class="active">Edition</a></li>
+                <li id="my-books-link" style="display: none;"><a href="my-books.html">Library</a></li>
+                <li id="admin-link" style="display: none;"><a href="admin.html">Portal</a></li>
                 <li id="auth-buttons">
-                    <a href="auth.html" class="btn btn-primary btn-sm" style="border-radius: 100px;">
-                        <i class="fas fa-user-circle"></i> Login
-                    </a>
+                    <a href="auth.html" class="btn btn-primary btn-sm">Access</a>
                 </li>
                 <li id="user-profile" style="display: none;">
-                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(99, 102, 241, 0.1); padding: 6px 16px; border-radius: 100px;">
-                        <span id="user-email" style="font-weight: 600; color: var(--primary-color);"></span>
-                        <button id="logout-btn" class="btn btn-outline btn-sm" style="border: none; padding: 0; color: var(--danger);"><i class="fas fa-sign-out-alt"></i></button>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <span id="user-email" style="font-weight: 700; font-size: 0.9rem; opacity: 0.8;"></span>
+                        <button id="logout-btn" class="btn btn-outline btn-sm" style="padding: 8px 15px;"><i class="fas fa-power-off"></i></button>
                     </div>
                 </li>
             </ul>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="hero">
         <div class="container">
-            <div id="featured-book-hero" class="hero-grid glass p-5" style="padding: 40px; border-radius: 32px;">
+            <div id="featured-book-hero" class="hero-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
                 <!-- Single Book will be loaded here via JS -->
                 <div class="loader"></div>
             </div>
@@ -59,30 +54,30 @@
     </header>
 
     <!-- Features Section -->
-    <section id="features" class="features section" style="background: var(--light-bg);">
+    <section id="features" class="section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Premium Features</h2>
+            <h2 class="section-title" data-aos="fade-up">The Velvet Standard</h2>
             <div class="features-grid">
-                <div class="feature-card glass" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon-wrapper" style="width: 80px; height: 80px; background: rgba(99, 102, 241, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
-                        <i class="fas fa-bolt" style="margin-bottom: 0;"></i>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-fingerprint"></i>
                     </div>
-                    <h3>Instant Unlock</h3>
-                    <p>No waiting for shipping. Get immediate access to your digital copy after verification.</p>
+                    <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 16px;">Unique Access</h3>
+                    <p style="color: var(--text-dim);">One-time transaction for lifetime ownership of this exclusive premium edition.</p>
                 </div>
-                <div class="feature-card glass" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon-wrapper" style="width: 80px; height: 80px; background: rgba(245, 158, 11, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
-                        <i class="fas fa-mobile-alt" style="margin-bottom: 0; color: var(--accent-color);"></i>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-wrapper" style="color: var(--secondary);">
+                        <i class="fas fa-infinity"></i>
                     </div>
-                    <h3>Multi-Device Support</h3>
-                    <p>Read on your phone, tablet, or desktop. Your purchase is tied to your account for life.</p>
+                    <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 16px;">Zero Friction</h3>
+                    <p style="color: var(--text-dim);">Instant digital delivery across all your devices, optimized for a seamless reading experience.</p>
                 </div>
-                <div class="feature-card glass" data-aos="fade-up" data-aos-delay="300">
-                    <div class="icon-wrapper" style="width: 80px; height: 80px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
-                        <i class="fas fa-shield-alt" style="margin-bottom: 0; color: var(--success);"></i>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-wrapper" style="color: var(--accent);">
+                        <i class="fas fa-shield-halved"></i>
                     </div>
-                    <h3>Secure Payment</h3>
-                    <p>Verified Telebirr transactions ensure your money and data are always safe.</p>
+                    <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 16px;">Pure Security</h3>
+                    <p style="color: var(--text-dim);">Encrypted transactions through Telebirr, ensuring your data remains private and protected.</p>
                 </div>
             </div>
         </div>
@@ -91,29 +86,23 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-info">
-                    <h3>DigiLib</h3>
-                    <p>Providing exclusive access to premium digital content.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px;">
+                <div>
+                    <h3>Velvet Edition</h3>
+                    <p style="color: var(--text-dim); max-width: 300px;">Elevating digital content to a premium experience.</p>
                 </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="auth.html">Login</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <h4>Follow Us</h4>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 DigiLib. All rights reserved.</p>
+            <div style="margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--glass-border); display: flex; justify-content: space-between; color: var(--text-dim); font-size: 0.9rem;">
+                <p>&copy; 2026 Velvet. All rights reserved.</p>
+                <div style="display: flex; gap: 30px;">
+                    <a href="#" style="color: inherit; text-decoration: none;">Privacy</a>
+                    <a href="#" style="color: inherit; text-decoration: none;">Terms</a>
+                </div>
             </div>
         </div>
     </footer>
