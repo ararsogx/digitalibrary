@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Library | Discover Your Next Read</title>
+    <title>Featured Book | DigiLib</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -25,13 +25,10 @@
             </a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="catalog.html">Catalog</a></li>
-                <li id="my-books-link" style="display: none;"><a href="my-books.html">My Books</a></li>
-                <li id="cart-link"><a href="cart.html"><i class="fas fa-shopping-cart"></i> <span id="cart-count" style="display: none; background: var(--danger); color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.8rem;">0</span></a></li>
+                <li id="my-books-link" style="display: none;"><a href="my-books.html">My Purchases</a></li>
                 <li id="admin-link" style="display: none;"><a href="admin.html">Admin</a></li>
                 <li id="auth-buttons">
                     <a href="auth.html" class="btn btn-outline">Login</a>
-                    <a href="auth.html#signup" class="btn btn-primary">Sign Up</a>
                 </li>
                 <li id="user-profile" style="display: none;">
                     <span id="user-email"></span>
@@ -47,16 +44,9 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="container">
-            <div class="hero-content" data-aos="fade-right">
-                <h1>Unlock a World of Knowledge</h1>
-                <p>Access thousands of digital books, research papers, and journals from anywhere in the world. Your personal library, redefined.</p>
-                <div class="hero-btns">
-                    <a href="catalog.html" class="btn btn-primary btn-lg">Browse Catalog</a>
-                    <a href="#features" class="btn btn-outline btn-lg">Learn More</a>
-                </div>
-            </div>
-            <div class="hero-image" data-aos="fade-left">
-                <img src="https://images.unsplash.com/photo-1481627564523-44752a74a06f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Library Hero">
+            <div id="featured-book-hero" class="hero-grid">
+                <!-- Single Book will be loaded here via JS -->
+                <div class="loader"></div>
             </div>
         </div>
     </header>
@@ -64,37 +54,23 @@
     <!-- Features Section -->
     <section id="features" class="features section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Why Choose DigiLib?</h2>
+            <h2 class="section-title" data-aos="fade-up">Why This Book?</h2>
             <div class="features-grid">
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
                     <i class="fas fa-bolt"></i>
                     <h3>Instant Access</h3>
-                    <p>Read your favorite books instantly on any device without waiting for downloads.</p>
+                    <p>Get immediate access to the digital version after payment verification.</p>
                 </div>
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-cloud"></i>
-                    <h3>Cloud Storage</h3>
-                    <p>Your library is synced across all your devices. Start reading on your phone, finish on your laptop.</p>
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Read Anywhere</h3>
+                    <p>Compatible with all devices. Read on your phone, tablet, or computer.</p>
                 </div>
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-search"></i>
-                    <h3>Smart Search</h3>
-                    <p>Find exactly what you're looking for with our advanced filtering and search system.</p>
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Payment</h3>
+                    <p>Safe and verified transactions via Telebirr for your peace of mind.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Books -->
-    <section class="featured-books section bg-light">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Featured Books</h2>
-            <div id="featured-list" class="book-grid">
-                <!-- Books will be loaded here via JS -->
-                <div class="loader"></div>
-            </div>
-            <div class="text-center mt-4">
-                <a href="catalog.html" class="btn btn-outline">View All Books</a>
             </div>
         </div>
     </section>
@@ -105,13 +81,12 @@
             <div class="footer-grid">
                 <div class="footer-info">
                     <h3>DigiLib</h3>
-                    <p>Empowering readers worldwide with instant access to digital knowledge.</p>
+                    <p>Providing exclusive access to premium digital content.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="catalog.html">Catalog</a></li>
                         <li><a href="auth.html">Login</a></li>
                     </ul>
                 </div>

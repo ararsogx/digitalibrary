@@ -72,11 +72,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Load Featured Books if on index.html
-    if (document.getElementById('featured-list')) {
-        loadFeaturedBooks();
+    // Load Featured Book if on index.html
+    if (document.getElementById('featured-book-hero')) {
+        loadSingleFeaturedBook();
     }
 });
+
+// Load Single Featured Book for Landing Page
+function loadSingleFeaturedBook() {
+    const heroContainer = document.getElementById('featured-book-hero');
+    
+    // Fetch only the first premium book to sell
+    db.collection('books').where('type', '==', 'premium').limit(1).get().then(snapshot => {
+        heroContainer.innerHTML = '';
+        if (snapshot.empty) {
+            heroContainer.innerHTML = '<p class="text-center">Book currently unavailable.</p>';
+            return;
+        }
+
+        const doc = snapshot.docs[0];
+        const book = doc.data();
+        const bookId = doc.id;
+
+        heroContainer.innerHTML = `
+            <div class="hero-content" data-aos="fade-right">
+                <span class="category" style="background: var(--primary-color); color: white; margin-bottom: 20px; display: inline-block;">Premium Release</span>
+                <h1>${book.title}</h1>
+                <p>${book.description || 'Get exclusive access to this premium digital content.'}</p>
+                <div class="hero-btns">
+                    <a href="book-details.html?id=${bookId}" class="btn btn-primary btn-lg">Get It Now - ${book.price} Birr</a>
+                    <a href="#features" class="btn btn-outline btn-lg">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image" data-aos="fade-left">
+                <img src="${book.coverUrl || 'https://images.unsplash.com/photo-1481627564523-44752a74a06f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'}" alt="${book.title}">
+            </div>
+        `;
+    }).catch(error => {
+        console.error("Error loading featured book:", error);
+        heroContainer.innerHTML = '<p class="text-center">Error loading book details.</p>';
+    });
+}
 
 // Night Mode Initialization
 function initNightMode() {
