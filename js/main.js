@@ -18,6 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Night Mode Toggle
     initNightMode();
 
+    // Navbar Scroll Effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
     // Check Auth State
     auth.onAuthStateChanged(user => {
         const authButtons = document.getElementById('auth-buttons');
@@ -96,10 +106,10 @@ function loadSingleFeaturedBook() {
 
         heroContainer.innerHTML = `
             <div class="hero-content" data-aos="fade-right">
-                <span class="category" style="margin-bottom: 24px; display: inline-block; background: rgba(124, 58, 237, 0.1); color: var(--primary);">Exclusive Release</span>
-                <h1 style="margin-bottom: 32px; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.9;">${book.title}</h1>
-                <p style="margin-bottom: 48px; font-size: 1.25rem; opacity: 0.8; max-width: 500px;">${book.description || 'Experience the digital masterpiece. Instant access to the premium edition.'}</p>
-                <div class="hero-btns" style="display: flex; gap: 20px;">
+                <span class="category">Exclusive Release</span>
+                <h1>${book.title}</h1>
+                <p>${book.description || 'Experience the digital masterpiece. Instant access to the premium edition.'}</p>
+                <div class="hero-btns">
                     <a href="book-details.html?id=${bookId}" class="btn btn-primary btn-lg">
                         Buy Now &mdash; ${book.price} ETB
                     </a>
@@ -107,11 +117,8 @@ function loadSingleFeaturedBook() {
                 </div>
             </div>
             <div class="hero-image" data-aos="fade-left">
-                <div style="position: relative;">
-                    <div style="position: absolute; inset: -20px; background: var(--primary); filter: blur(60px); opacity: 0.15; z-index: -1;"></div>
-                    <img src="${book.coverUrl || 'https://images.unsplash.com/photo-1481627564523-44752a74a06f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'}" 
-                         alt="${book.title}" 
-                         style="width: 100%; border-radius: 40px; transform: perspective(1000px) rotateY(-5deg);">
+                <div class="image-glow-wrapper">
+                    <img src="${book.coverUrl || 'https://images.unsplash.com/photo-1481627564523-44752a74a06f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'}" alt="${book.title}">
                 </div>
             </div>
         `;
@@ -239,38 +246,29 @@ function loadFeaturedBooks() {
 // Helper function to create book card
 function createBookCard(book, id) {
     const div = document.createElement('div');
-    div.className = 'feature-card';
-    div.style.cssText = `
-        padding: 30px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    `;
+    div.className = 'glass-card book-card-v2';
     div.setAttribute('data-aos', 'fade-up');
     
     const isPremium = book.type === 'premium';
     
     div.innerHTML = `
-        <div style="position: relative; border-radius: 20px; overflow: hidden; height: 350px;">
-            <img src="${book.coverUrl || 'https://via.placeholder.com/220x300?text=No+Cover'}" alt="${book.title}" 
-                 style="width: 100%; height: 100%; object-fit: cover;">
-            <div style="position: absolute; bottom: 20px; left: 20px;">
-                <span class="category" style="background: var(--primary); color: white;">
-                    ${isPremium ? `${book.price} ETB` : 'FREE'}
-                </span>
+        <div class="card-image">
+            <img src="${book.coverUrl || 'https://via.placeholder.com/220x300?text=No+Cover'}" alt="${book.title}">
+            <div class="card-badge">
+                <span class="category">${isPremium ? `${book.price} ETB` : 'FREE'}</span>
             </div>
         </div>
-        <div style="flex-grow: 1;">
-            <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">${book.title}</h3>
-            <p style="color: var(--text-dim); font-size: 0.95rem;">${book.author}</p>
-        </div>
-        <div style="display: flex; gap: 15px;">
-            <a href="book-details.html?id=${id}" class="btn btn-primary btn-sm" style="flex-grow: 1;">Access</a>
-            ${isPremium ? `
-            <button onclick="addToCart(${JSON.stringify(book).replace(/"/g, '&quot;')}, '${id}')" 
-                    class="btn btn-outline btn-sm" style="width: 50px; padding: 0;">
-                <i class="fas fa-plus"></i>
-            </button>` : ''}
+        <div class="card-content">
+            <h3>${book.title}</h3>
+            <p>${book.author}</p>
+            <div class="card-footer">
+                <a href="book-details.html?id=${id}" class="btn btn-primary btn-sm">Access</a>
+                ${isPremium ? `
+                <button onclick="addToCart(${JSON.stringify(book).replace(/"/g, '&quot;')}, '${id}')" 
+                        class="btn btn-outline btn-sm icon-btn">
+                    <i class="fas fa-plus"></i>
+                </button>` : ''}
+            </div>
         </div>
     `;
     return div;
