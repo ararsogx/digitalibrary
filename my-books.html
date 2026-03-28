@@ -15,35 +15,69 @@
     <meta name="apple-mobile-web-app-title" content="DigiLib">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2702/2702134.png">
 </head>
-<body>
-    <nav class="navbar">
+<body style="background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.05), transparent), radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.05), transparent); min-height: 100vh;">
+    <nav class="navbar glass">
         <div class="container">
             <a href="index.html" class="logo">
-                <i class="fas fa-book-open"></i> DigiLib
+                <div class="logo-icon" style="width: 40px; height: 40px; background: var(--primary-color); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <span>DigiLib</span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="catalog.html">Catalog</a></li>
-                <li id="my-books-link" class="active"><a href="my-books.html">My Books</a></li>
-                <li id="admin-link" style="display: none;"><a href="admin.html">Admin</a></li>
+                <li id="my-books-link" class="active"><a href="my-books.html">Purchases</a></li>
+                <li id="admin-link" style="display: none;"><a href="admin.html">Dashboard</a></li>
                 <li id="user-profile">
-                    <span id="user-email"></span>
-                    <button id="logout-btn" class="btn btn-outline btn-sm">Logout</button>
+                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(99, 102, 241, 0.1); padding: 6px 16px; border-radius: 100px;">
+                        <span id="user-email" style="font-weight: 600; color: var(--primary-color);"></span>
+                        <button id="logout-btn" class="btn btn-outline btn-sm" style="border: none; padding: 0; color: var(--danger);"><i class="fas fa-sign-out-alt"></i></button>
+                    </div>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <div class="section">
+    <div class="section" style="padding-top: 150px;">
         <div class="container">
-            <h1 class="section-title">My Digital Library</h1>
-            <p class="text-center mb-5">Books you have purchased or added to your collection.</p>
+            <h1 class="section-title" style="font-weight: 800;">My Digital Purchases</h1>
+            <p class="text-center mb-5" style="color: var(--gray); font-weight: 500;">Access all your purchased premium content here.</p>
             
             <div id="my-books-list" class="book-grid">
                 <div class="loader"></div>
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h3>DigiLib</h3>
+                    <p>Providing exclusive access to premium digital content.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="auth.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DigiLib. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>

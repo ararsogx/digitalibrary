@@ -236,17 +236,40 @@ function loadFeaturedBooks() {
 // Helper function to create book card
 function createBookCard(book, id) {
     const div = document.createElement('div');
-    div.className = 'book-card';
+    div.className = 'book-card glass';
+    div.style.cssText = `
+        border-radius: 20px;
+        overflow: hidden;
+        transition: var(--transition);
+        border: 1px solid var(--glass-border);
+    `;
     div.setAttribute('data-aos', 'fade-up');
     
+    const isPremium = book.type === 'premium';
+    
     div.innerHTML = `
-        <img src="${book.coverUrl || 'https://via.placeholder.com/220x300?text=No+Cover'}" alt="${book.title}" class="book-img">
-        <div class="book-info">
-            <h3>${book.title}</h3>
-            <p class="book-author">${book.author}</p>
-            <div class="book-actions" style="display: flex; gap: 5px; flex-wrap: wrap;">
-                <a href="book-details.html?id=${id}" class="btn btn-outline btn-sm">Details</a>
-                ${book.type === 'premium' ? `<button onclick="addToCart(${JSON.stringify(book).replace(/"/g, '&quot;')}, '${id}')" class="btn btn-primary btn-sm"><i class="fas fa-cart-plus"></i></button>` : ''}
+        <div style="position: relative; overflow: hidden; height: 320px;">
+            <img src="${book.coverUrl || 'https://via.placeholder.com/220x300?text=No+Cover'}" alt="${book.title}" 
+                 style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);" 
+                 onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <div style="position: absolute; top: 15px; right: 15px;">
+                <span class="category" style="background: ${isPremium ? 'var(--accent-color)' : 'var(--success)'}; color: white; box-shadow: var(--shadow);">
+                    ${isPremium ? `${book.price} Birr` : 'FREE'}
+                </span>
+            </div>
+        </div>
+        <div class="book-info" style="padding: 20px;">
+            <h3 style="font-weight: 700; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${book.title}</h3>
+            <p class="book-author" style="color: var(--gray); font-size: 0.9rem; margin-bottom: 20px; font-weight: 600;">by ${book.author}</p>
+            <div class="book-actions" style="display: flex; gap: 10px;">
+                <a href="book-details.html?id=${id}" class="btn btn-primary btn-sm" style="flex: 1; border-radius: 10px;">
+                    <i class="fas fa-eye"></i> View
+                </a>
+                ${isPremium ? `
+                <button onclick="addToCart(${JSON.stringify(book).replace(/"/g, '&quot;')}, '${id}')" 
+                        class="btn btn-outline btn-sm" style="width: 45px; border-radius: 10px; padding: 0;">
+                    <i class="fas fa-cart-plus"></i>
+                </button>` : ''}
             </div>
         </div>
     `;

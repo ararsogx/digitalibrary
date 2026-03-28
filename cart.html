@@ -15,31 +15,34 @@
     <meta name="apple-mobile-web-app-title" content="DigiLib">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2702/2702134.png">
 </head>
-<body>
-    <nav class="navbar">
+<body style="background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.05), transparent), radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.05), transparent); min-height: 100vh;">
+    <nav class="navbar glass">
         <div class="container">
             <a href="index.html" class="logo">
-                <i class="fas fa-book-open"></i> DigiLib
+                <div class="logo-icon" style="width: 40px; height: 40px; background: var(--primary-color); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <span>DigiLib</span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="catalog.html">Catalog</a></li>
-                <li id="my-books-link" style="display: none;"><a href="my-books.html">My Books</a></li>
-                <li id="cart-link" class="active"><a href="cart.html"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a></li>
-                <li id="admin-link" style="display: none;"><a href="admin.html">Admin</a></li>
+                <li id="my-books-link" style="display: none;"><a href="my-books.html">Purchases</a></li>
+                <li id="admin-link" style="display: none;"><a href="admin.html">Dashboard</a></li>
                 <li id="user-profile" style="display: none;">
-                    <span id="user-email"></span>
-                    <button id="logout-btn" class="btn btn-outline btn-sm">Logout</button>
+                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(99, 102, 241, 0.1); padding: 6px 16px; border-radius: 100px;">
+                        <span id="user-email" style="font-weight: 600; color: var(--primary-color);"></span>
+                        <button id="logout-btn" class="btn btn-outline btn-sm" style="border: none; padding: 0; color: var(--danger);"><i class="fas fa-sign-out-alt"></i></button>
+                    </div>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <div class="section">
+    <div class="section" style="padding-top: 150px;">
         <div class="container">
-            <h1 class="section-title">Your Shopping Cart</h1>
+            <h1 class="section-title" style="font-weight: 800;">Shopping Cart</h1>
             
-            <div id="cart-items" class="admin-table-container">
+            <div id="cart-items" class="admin-table-container glass" style="border-radius: 24px; padding: 30px;">
                 <table class="admin-table">
                     <thead>
                         <tr>
@@ -53,17 +56,47 @@
                     </tbody>
                 </table>
                 <div class="cart-summary mt-4 text-right" style="text-align: right; padding: 20px;">
-                    <h3>Total: <span id="cart-total">0</span> Birr</h3>
-                    <button id="checkout-btn" class="btn btn-primary btn-lg mt-3">Checkout All</button>
+                    <h3 style="font-weight: 700;">Total: <span id="cart-total" style="color: var(--primary-color);">0</span> Birr</h3>
+                    <button id="checkout-btn" class="btn btn-primary btn-lg mt-3" style="border-radius: 15px; font-weight: 700;">Checkout All</button>
                 </div>
             </div>
 
-            <div id="empty-cart" style="display: none;" class="text-center">
-                <p>Your cart is empty.</p>
-                <a href="catalog.html" class="btn btn-primary mt-3">Browse Books</a>
+            <div id="empty-cart" style="display: none;" class="text-center glass p-5" style="border-radius: 24px; padding: 50px;">
+                <p style="font-size: 1.2rem; font-weight: 600; color: var(--gray);">Your cart is empty.</p>
+                <a href="index.html" class="btn btn-primary mt-3" style="border-radius: 100px;">Back to Home</a>
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h3>DigiLib</h3>
+                    <p>Providing exclusive access to premium digital content.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="auth.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DigiLib. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>

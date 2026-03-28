@@ -15,25 +15,57 @@
     <meta name="apple-mobile-web-app-title" content="DigiLib">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2702/2702134.png">
 </head>
-<body>
-    <nav class="navbar">
+<body style="background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.05), transparent), radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.05), transparent); min-height: 100vh;">
+    <nav class="navbar glass">
         <div class="container">
             <a href="index.html" class="logo">
-                <i class="fas fa-book-open"></i> DigiLib
+                <div class="logo-icon" style="width: 40px; height: 40px; background: var(--primary-color); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <span>DigiLib</span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="catalog.html">Catalog</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="section">
+    <div class="section" style="padding-top: 150px;">
         <div class="container" id="book-detail-container">
             <div class="loader"></div>
             <!-- Dynamic Content -->
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h3>DigiLib</h3>
+                    <p>Providing exclusive access to premium digital content.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="auth.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DigiLib. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
