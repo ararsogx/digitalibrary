@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Catalog | DigiLib</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- PWA Support -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6c5ce7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="DigiLib">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3308/3308312.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-book-open"></i> DigiLib
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html" class="active">Catalog</a></li>
+                <li id="my-books-link" style="display: none;"><a href="my-books.html">My Books</a></li>
+                <li id="cart-link"><a href="cart.html"><i class="fas fa-shopping-cart"></i> <span id="cart-count" style="display: none; background: var(--danger); color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.8rem;">0</span></a></li>
+                <li id="admin-link" style="display: none;"><a href="admin.html">Admin</a></li>
+                <li id="auth-buttons">
+                    <a href="auth.html" class="btn btn-outline">Login</a>
+                </li>
+                <li id="user-profile" style="display: none;">
+                    <span id="user-email"></span>
+                    <button id="logout-btn" class="btn btn-outline btn-sm">Logout</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Catalog Section -->
+    <section class="section">
+        <div class="container">
+            <h1 class="section-title">Explore Our Library</h1>
+            
+            <!-- Search and Filter -->
+            <div class="search-filter-section">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search by title or author...">
+                    <button id="search-btn" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+                </div>
+                <div class="filter-controls">
+                    <select id="category-filter">
+                        <option value="">All Categories</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Non-Fiction">Non-Fiction</option>
+                        <option value="Science">Science</option>
+                        <option value="Technology">Technology</option>
+                        <option value="History">History</option>
+                    </select>
+                    <select id="sort-filter">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="az">A - Z</option>
+                        <option value="za">Z - A</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="catalog-list" class="book-grid">
+                <!-- Books loaded dynamically -->
+                <div class="loader"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 DigiLib. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <script src="js/firebase-config.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/catalog.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+    </script>
+</body>
+</html>
